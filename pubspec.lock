@@ -43,6 +43,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.16.0"
+  crypto:
+    dependency: "direct main"
+    description:
+      name: crypto
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.2"
+  crypto_font_icons:
+    dependency: "direct main"
+    description:
+      name: crypto_font_icons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -69,11 +83,39 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  flutter_platform_widgets:
+    dependency: "direct main"
+    description:
+      name: flutter_platform_widgets
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
+  grouped_list:
+    dependency: "direct main"
+    description:
+      name: grouped_list
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.1.2"
+  http:
+    dependency: "direct main"
+    description:
+      name: http
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.13.4"
+  http_parser:
+    dependency: transitive
+    description:
+      name: http_parser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.1"
   lints:
     dependency: transitive
     description:
@@ -109,6 +151,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.1"
+  searchable_listview:
+    dependency: "direct main"
+    description:
+      name: searchable_listview
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.7.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -142,6 +191,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
+  tabbar:
+    dependency: "direct main"
+    description:
+      name: tabbar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   term_glyph:
     dependency: transitive
     description:
@@ -156,6 +212,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.9"
+  typed_data:
+    dependency: transitive
+    description:
+      name: typed_data
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.3.1"
+  typicons_flutter:
+    dependency: "direct main"
+    description:
+      name: typicons_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.0"
   vector_math:
     dependency: transitive
     description:
@@ -165,3 +235,4 @@ packages:
     version: "2.1.2"
 sdks:
   dart: ">=2.17.1 <3.0.0"
+  flutter: ">=3.0.0"
