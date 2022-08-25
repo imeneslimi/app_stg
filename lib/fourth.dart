@@ -16,9 +16,15 @@ class Note {
   final String phone;
   final String email;
   final String adress;
+  final String problem;
+  final String year;
+  final String case_amount;
+  final String payments;
+  final String remain;
+
 
   Note({required this.title, required this.content , required this.court , required this.circle , required this.type
-    , required this.casenum , required this.status , required this.name , required this.phone , required this.email , required this.adress});
+    , required this.casenum , required this.status , required this.name , required this.phone , required this.email , required this.adress , required this.problem ,required this.year,required this.case_amount,required this.remain,required this.payments});
 }
 
 class MyApp extends StatelessWidget {
@@ -37,43 +43,58 @@ class ListScreen extends StatelessWidget {
   ListScreen({Key? key}) : super(key: key);
   final List<Note> _noteList = [
     Note(
-      title: '12005/2022',
-      content: 'Lawyer : Ahmed',
-      court :'Qatar Court',
-      circle :'Doha circle',
-      type : 'commercial',
-      casenum : '2022/4520',
-      status : 'Resumption',
+      title: '12005',
+      year : '2022',
+      content: ' Ahmed',
+      court :'محكمة قطر',
+      circle :'دائرة الدوحة',
+      type : 'تجارية',
+      casenum : '4520',
+      status : 'استئناف',
       name :'Dhaou ',
       phone : '+216 50622415',
         email : 'dhaou@gmail.com',
         adress: 'Qatar Doha 2025',
+      problem: 'حل نزاع على ملكية تجارية',
+      case_amount : '200.00',
+      remain : '0',
+      payments : '200.00',
     ),
     Note(
-      title: '35678/2022',
-      content: 'Lawyer : Mahdi',
-      court :'Qatar Court',
-      circle :'Doha circle',
-      type : 'commercial',
-        casenum : '2022/5600',
-        status : 'Judgment',
+      title: '35678',
+        year : '2022',
+      content: 'Mahdi',
+      court :'محكمة قطر',
+      circle :'دائرة الدوحة',
+      type : 'تجارية ',
+        casenum : '5600',
+        status : 'الحكم',
         name :'Salah ',
         phone : '+216 22622415',
         email : 'Salah@gmail.com',
-        adress: 'Qatar Doha 2025'
+        adress: 'Qatar Doha 2025',
+        problem: 'حل نزاع على ملكية تجارية',
+      case_amount : '210.00',
+      remain : '0',
+      payments : '210.00',
     ),
     Note(
-      title: '89645/2022',
-      content: 'Lawyer : Imed',
-        court :'Qatar Court',
-        circle :'Doha circle',
-        type : 'legitimacy',
-        casenum : '2022/3200',
-        status : 'Archives',
+      title: '89645',
+        year : '2022',
+      content: ' Imed',
+        court :'محكمة قطر',
+        circle :'دائرة الدوحة',
+        type : 'جنائية',
+        casenum : '3200',
+        status : 'منظورة سابقا',
         name :'Mohamd ',
         phone : '+216 98622415',
         email : 'Mohamd@gmail.com',
-        adress: 'Qatar Doha 2025'
+        adress: 'Qatar Doha 2025',
+        problem: 'التهجم على موظف للدولة اثناء اداء مهامه',
+      case_amount : '230.00',
+      remain : '0',
+      payments : '230.00',
 
     )
   ];
@@ -81,22 +102,42 @@ class ListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cases List'),
+        title: Text('Cases'),
       ),
-      body: ListView.builder(
-          itemCount: _noteList.length,
-          itemBuilder: (context, index) {
-            return Card(
-              child:
+      body: Column(
+        children: [
 
-              ListTile(
-                title: Text(
-                  _noteList[index].title, style: TextStyle(fontSize: 20 , color: Colors.black , fontWeight: FontWeight.bold),
-                ),
-                subtitle: Text(
-                  _noteList[index].content + '...' +_noteList[index].circle +'...' + _noteList[index].type +'...' + _noteList[index].court +'.', style: TextStyle(fontSize: 15 , color: Colors.black , ),
-                ),
-                trailing: Icon(Icons.arrow_forward),
+         Padding(padding: EdgeInsets.only(top: 5),
+         child:  Container(
+           height: 40,
+           width: 385,
+           color: Colors.red,
+           child: Text('Cases(s) List' , style: TextStyle(fontSize: 20 , color: Colors.white , fontWeight: FontWeight.bold),),
+         ),),
+
+          Expanded(child:
+          ListView.builder(
+              itemCount: _noteList.length,
+              itemBuilder: (context, index) {
+                return
+
+                  Card(
+                      color: Colors.white,
+                      child:Stack(
+                        children: [
+                          Container(
+                            height: 140,
+
+                            child: Column(
+                              children: [
+                                ListTile(
+                                  title: Text(
+                                    _noteList[index].title+'/'+_noteList[index].year, style: TextStyle(fontSize: 20 , color: Colors.black , fontWeight: FontWeight.bold),
+                                  ),
+                                  subtitle: Text(
+                                    'Lawyer : '+_noteList[index].content , style: TextStyle(fontSize: 15 , color: Colors.black , ),
+                                  ),
+                                  trailing: Icon(Icons.arrow_forward , color: Colors.red,),
 
 
 
@@ -106,19 +147,72 @@ class ListScreen extends StatelessWidget {
 
 
 
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DetailScreen(),
-                      settings: RouteSettings(arguments: _noteList[index]),
-                    ),
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DetailScreen(),
+                                        settings: RouteSettings(arguments: _noteList[index]),
+                                      ),
+                                    );
+                                  },
+                                ),
+
+                              ],
+                            ),
+                          ),
+
+
+
+                          Padding(padding: EdgeInsets.only(left: 18, top: 65),
+                            child:Container(
+                              height: 30,
+                              width: 120,
+                              child: Text( 'Court : '+_noteList[index].court , style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color:   Colors.black),),
+                            ) ,),
+                          Padding(padding: EdgeInsets.only(left: 18,top: 90 ),
+                            child:Container(
+                              height: 30,
+                              width: 245,
+                              child: Text(_noteList[index].problem , style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color:   Colors.black),),
+                            ) ,),
+                          Padding(padding: EdgeInsets.only(left: 130, top: 22),
+                            child:Container(
+                              alignment: Alignment.topRight,
+                              height: 30,
+                              width: 200,
+                              color: Colors.white,
+                              child: Text(_noteList[index].type+' / '+_noteList[index].status , style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color:   Colors.red),),
+                            ) ,),
+                          Padding(padding: EdgeInsets.only(left: 160, top: 65),
+                            child:Container(
+                              height: 30,
+                              width: 130,
+                              child: Text('Circle : '+_noteList[index].circle, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color:   Colors.black),),
+                            ) ,),
+
+
+
+
+
+
+
+
+
+                        ],
+                      )
+
+
                   );
-                },
-              ),
-            );
 
-          }),
+
+
+
+
+              }),)
+        ],
+      )
+
     );
   }
 }

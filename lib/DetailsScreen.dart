@@ -21,8 +21,11 @@ class DetailScreen extends StatelessWidget {
             title: Text('Case details'),
 
             bottom: TabBar(
+              indicatorColor: Colors.black,
+              labelColor: Colors.black,
+
               tabs: [
-                Tab(text: 'infos',  ),
+                Tab(text: 'infos', ),
                 Tab(text: 'Parties',),
                 Tab(text: 'Sessions',),
                 Tab(text: 'Docs',)

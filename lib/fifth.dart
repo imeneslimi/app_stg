@@ -1,59 +1,79 @@
+
+
 import 'package:app_stg/detailsappointements.dart';
 import 'package:flutter/material.dart';
 
+import 'appoint_ajout.dart';
 
 
 
 
+class Note {
 
-class item {
 
 
   final String date;
-  final String time;
-  final String detail;
+  final String time1;
 
-  item({  required this.date,required this.time ,required this.detail  });
+  final String details1;
+  final String time2;
+
+  final String details2;
+
+  final String pending;
+
+
+
+  Note({  required this.date ,required this.time1,required this.details1 ,required this.pending, required this.time2,required this.details2});
 }
 
-
-
-class FifthPage extends StatefulWidget {
-  const FifthPage({Key? key}) : super(key: key);
-
+class MyApp extends StatelessWidget {
   @override
-  State<FifthPage> createState() => _FifthPageState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter ListView Navigation - Passing Data',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: FifthPage(),
+    );
+  }
 }
 
-class _FifthPageState extends State<FifthPage> {
 
-  final List<item> _itemList = [
-    item(
 
-      date :'15/07/2022',
-      time :'19:00',
-      detail :'Appointements details 1',
+class FifthPage extends StatelessWidget {
+
+
+
+
+
+  final List<Note> _noteList = [
+    Note(
+      date :'05/07/2022',
+      time1 :'19:00',
+      details1 :'Appointements details 1',
+      time2 :'3:00',
+      details2 :'Appointements details 2',
+      pending :'Pending',
 
 
     ),
-    item(
-
+    Note(
 
       date :'16/07/2022',
-      time :'18:00',
-      detail :'Appointements details 2',
+
+      time1 :'4:00',
+      details1 :'Appointements details 1',
+      time2 :'18:00',
+      details2 :'Appointements details 2',
+      pending :'Pending',
 
     ),
-    item(
 
-
-      date :'18/10/2022',
-      time :'16:00',
-      detail :'Appointements details 3',
-
-
-    )
   ];
+
+
 
 
 
@@ -66,76 +86,143 @@ class _FifthPageState extends State<FifthPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        actions: [
+          IconButton(onPressed: (){
+
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>ajout()));
+
+          }, icon: Icon(Icons.add))
+        ],
         title: Text('Appointements'),
+
       ),
 
+      body:
+
+        ListView.builder(
+
+            itemCount: _noteList.length,
+            itemBuilder: (context, index) {
+              return Card(
+                child: Column(
+                  children: [
+
+                    ExpansionTile(
+
+                      title: Text(_noteList[index].date , style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
 
 
-      body: SingleChildScrollView(
-        child: ExpansionPanelList.radio(
-          elevation: 3,
-          animationDuration: const Duration(milliseconds: 600),
-          children: _itemList
-              .map(
-                (item) => ExpansionPanelRadio(
-                value: item.date,
-                canTapOnHeader: true,
-                headerBuilder: (_, isExpanded) =>
-                    Container(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 40, horizontal: 30),
-                    child: Column(
+
                       children: [
-                        Text(
-                          item.date,
-                          style: const TextStyle(fontSize: 20),
-                        )
+
+                        Container(
+
+                            child:Stack(
+                              children: [
+                                Column(children: [
+                                  ListTile(
+
+                                    title: Text(
+                                      _noteList[index].time1, style: TextStyle(fontSize: 20 , color: Colors.black , fontWeight: FontWeight.bold),
+                                    ),
+                                    subtitle: Text(
+                                      _noteList[index].details1 , style: TextStyle(fontSize: 17 , color: Colors.black , ),
+                                    ),
+                                    trailing: Icon(Icons.arrow_forward , color: Colors.red,),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => AppoiPage(),
+                                          settings: RouteSettings(arguments : _noteList[index], ),
+
+
+
+                                        ),
+                                      );
+                                    },
+
+                                  ),
+
+
+
+                                ],),
+                                Padding(padding: EdgeInsets.only(left: 270, top: 26),
+                                  child:Container(
+                                    height: 35,
+                                    width: 60,
+                                    child: Text(_noteList[index].pending , style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color:   Colors.red),),
+                                  ) ,),
+                              ],
+                            )
+
+                        ),
+                        Container(
+
+                            child:Stack(
+                              children: [
+                                Column(children: [
+                                  ListTile(
+
+                                    title: Text(
+                                      _noteList[index].time2, style: TextStyle(fontSize: 20 , color: Colors.black , fontWeight: FontWeight.bold),
+                                    ),
+                                    subtitle: Text(
+                                      _noteList[index].details2 , style: TextStyle(fontSize: 17 , color: Colors.black , ),
+                                    ),
+                                    trailing: Icon(Icons.arrow_forward , color: Colors.red,),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => AppoiPage(),
+                                          settings: RouteSettings(arguments: _noteList[index],),
+                                        ),
+                                      );
+                                    },
+
+                                  ),
+
+
+                                ],),
+
+                                Padding(padding: EdgeInsets.only(left: 270, top: 26),
+                                  child:Container(
+                                    height: 35,
+                                    width: 60,
+                                    child: Text(_noteList[index].pending , style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color:   Colors.red),),
+                                  ) ,),
+                              ],
+                            )
+
+                        ),
+
+
 
                       ],
-                    )
-
                     ),
-                body: Column(
-                  children: [
-                    Container(
 
-
-                child: ListTile(
-                title: Text(
-                  item.time, style: TextStyle(fontSize: 20 , color: Colors.black , fontWeight: FontWeight.bold),
-                ),
-                  subtitle: Text(
-                    item.detail , style: TextStyle(fontSize: 15 , color: Colors.black , ),
-                  ),
-                  trailing: Icon(Icons.arrow_forward),
-
-
-
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AppoiPage(),
-                        settings: RouteSettings(arguments: _itemList),
-                      ),
-                    );
-                  },
-                ),
-
-
-
-
-                    ),
                   ],
                 )
 
 
 
-            ),
-          )
-              .toList(),
-        ),
-      ),
+              );
+
+
+
+
+
+
+
+            }),
+
+
+
+
     );
   }
+
+
+
 }

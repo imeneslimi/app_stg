@@ -1,9 +1,6 @@
 import 'package:app_stg/third.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:searchable_listview/searchable_listview.dart';
+
 
 import 'fifth.dart';
 import 'fourth.dart';
@@ -32,11 +29,11 @@ class _SecondPageState extends State<SecondPage> {
 
         body: screens[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.blue,
           type: BottomNavigationBarType.fixed,
-          selectedItemColor: Colors.red,
-          unselectedItemColor: Colors.blue,
-          iconSize: 26,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.white,
+          iconSize: 28,
           showUnselectedLabels: false,
           onTap: (index){
             setState((){
@@ -45,8 +42,8 @@ class _SecondPageState extends State<SecondPage> {
           currentIndex: _currentIndex,
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.dashboard ) , label: 'dashboard' , backgroundColor: Colors.redAccent),
-            BottomNavigationBarItem(icon: Icon(Icons.cases ,), label: 'cases' ,backgroundColor: Colors.greenAccent ),
-            BottomNavigationBarItem(icon: Icon(Icons.timer ,), label: 'appointements' ,backgroundColor: Colors.yellowAccent ),
+            BottomNavigationBarItem(icon: Icon(Icons.cases ,), label: 'cases' ,backgroundColor: Colors.redAccent ),
+            BottomNavigationBarItem(icon: Icon(Icons.timer ,), label: 'appointements' ,backgroundColor: Colors.redAccent,),
 
           ],
         ),
